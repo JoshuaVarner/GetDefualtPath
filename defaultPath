@@ -1,18 +1,18 @@
 Option Explicit
-Dim objShell, objFSO, strDocumentsPath, strVideosPath, strMusicPath, strFavoritesPath
+Dim objShell, strDocumentsPath, strMusicPath, strVideosPath, strFavoritesPath, strRegKey
 
 Set objShell = CreateObject("WScript.Shell")
-Set objFSO = CreateObject("Scripting.FileSystemObject")
 
-strDocumentsPath = objShell.SpecialFolders("MyDocuments")
-strVideosPath = objShell.SpecialFolders("MyVideos")
-strMusicPath = objShell.SpecialFolders("MyMusic")
-strFavoritesPath = objShell.SpecialFolders("Favorites")
+strRegKey = "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\"
+
+strDocumentsPath = objShell.RegRead(strRegKey & "Personal")
+strMusicPath = objShell.RegRead(strRegKey & "My Music")
+strVideosPath = objShell.RegRead(strRegKey & "My Video")
+strFavoritesPath = objShell.RegRead(strRegKey & "Favorites")
 
 WScript.Echo "Documents Folder Path: " & strDocumentsPath
-WScript.Echo "Videos Folder Path: " & strVideosPath
 WScript.Echo "Music Folder Path: " & strMusicPath
+WScript.Echo "Videos Folder Path: " & strVideosPath
 WScript.Echo "Favorites Folder Path: " & strFavoritesPath
 
 Set objShell = Nothing
-Set objFSO = Nothing
