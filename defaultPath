@@ -1,0 +1,18 @@
+Option Explicit
+Dim objShell, objFSO, strDocumentsPath, strVideosPath, strMusicPath, strFavoritesPath
+
+Set objShell = CreateObject("WScript.Shell")
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+
+strDocumentsPath = objShell.SpecialFolders("MyDocuments")
+strVideosPath = objShell.SpecialFolders("MyVideos")
+strMusicPath = objShell.SpecialFolders("MyMusic")
+strFavoritesPath = objShell.SpecialFolders("Favorites")
+
+WScript.Echo "Documents Folder Path: " & strDocumentsPath
+WScript.Echo "Videos Folder Path: " & strVideosPath
+WScript.Echo "Music Folder Path: " & strMusicPath
+WScript.Echo "Favorites Folder Path: " & strFavoritesPath
+
+Set objShell = Nothing
+Set objFSO = Nothing
